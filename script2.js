@@ -23,7 +23,6 @@
         const settings = { ...defaultConfig, ...config };
 
         function createVIPAccessModal() {
-            console.log('Engaged');
             // Criar overlay de fundo
             const overlay = document.createElement('div');
             overlay.id = 'vip-access-overlay';
@@ -134,7 +133,11 @@
             }
         }
 
-        // Executar quando o DOM estiver completamente carregado
-        document.addEventListener('DOMContentLoaded', checkAndInitializeVIPModal);
+        // Executar imediatamente ou quando GTM injeções acontecerem
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+            checkAndInitializeVIPModal();
+        } else {
+            document.addEventListener('DOMContentLoaded', checkAndInitializeVIPModal);
+        }
     };
 }));
