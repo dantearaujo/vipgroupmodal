@@ -23,6 +23,7 @@
         const settings = { ...defaultConfig, ...config };
 
         function createVIPAccessModal() {
+            console.log('🎟️');
             // Criar overlay de fundo
             const overlay = document.createElement('div');
             overlay.id = 'vip-access-overlay';
